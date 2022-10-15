@@ -24,7 +24,7 @@ function onSubmitEvt(evt){
 
     for(let i = 1; i <= currentPosition; i++){
       createPromise(position, delay);
-      console.log('position: ', position + ' delay: ', delay)
+      console.log('position:', position + ' delay: ', delay)
       delay += step;
       position +=1;
     }
