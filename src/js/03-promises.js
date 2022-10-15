@@ -7,7 +7,7 @@ const refs = {
 }
 
 let delay;
-let amount;
+let step;
 let currentPosition;
 
 let formData = {};
