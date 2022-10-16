@@ -23,14 +23,21 @@ const options = {
 const dataPickr = flatpickr('#datetime-picker', options);
 
 const timer = {
+
   start() {
     const counterdownDate = dataPickr.selectedDates[0];
 
-    setInterval(() => {
+    const intervalId = setInterval(() => {
       const finishDate = Date.now();
       const timeDifference = counterdownDate - finishDate;
+
+      if(timeDifference > 0){
       const {days, hours, minutes, seconds} = convertMs(timeDifference);
       updateCounterdown({days, hours, minutes, seconds});
+      } else {
+        clearInterval(intervalId);
+      }
+    // return intervalId;
     }, 1000);
   },
 };
@@ -83,4 +90,4 @@ function updateCounterdown({days, hours, minutes, seconds}){
 }
 
 
-console.log(refs.daysCounter.textContent)
+console.log('how we see the date', refs.daysCounter.textContent, typeof refs.daysCounter.textContent)

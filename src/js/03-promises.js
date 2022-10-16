@@ -15,8 +15,6 @@ refs.form.addEventListener('submit', onSubmitEvt);
 
 function onSubmitEvt(evt){
   evt.preventDefault();
-    // const {elements: {delay, step, amount}} = evt.currentTarget;
-    // console.log(delay.value, step.value, amount.value);
     delay = Number(refs.delayInput.value);
     currentPosition = Number(refs.amountInput.value);
     step = Number(refs.stepInput.value);
@@ -27,9 +25,15 @@ function onSubmitEvt(evt){
       console.log('position:', position + ' delay: ', delay)
       delay += step;
       position +=1;
-    }
-};
+    };
 
+    clearFields();
+};
+function clearFields(){
+  refs.delayInput.value = '';
+  refs.amountInput.value = '';
+  refs.stepInput.value = '';
+}
 
 function createPromise(position, delay) {
   const shouldResolve = Math.random() > 0.3;
@@ -51,5 +55,4 @@ function createPromise(position, delay) {
   })
   .catch(({ position, delay }) => {
     console.log(`❌ Rejected promise ${position} in ${delay}ms`);
-  });
-
+  })};
